@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escola Benedita Garcia da Cruz</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Verificar Nota do Aluno</h1>
+    </header>
+    
+    <main>
+        <form id="formulario">
+            <label for="notaUm">Qual a nota do primeiro bimestre</label>
+            <input type="text" id="notaUm" placeholder="Nota 1">
+            
+            <label for="notaDois">Qual a nota do segundo bimestre</label>
+            <input type="text" id="notaDois" placeholder="Nota 2">
+            
+            <label for="notaTRES">Qual a nota do terceiro bimestre</label>
+            <input type="text" id="notaTRES" placeholder="Nota 3">
+            
+            <label for="notaQUATRO">Qual a nota do quarto bimestre</label>
+            <input type="text" id="notaQUATRO" placeholder="Nota 4">
+            
+            <input id="button" type="button" value="Verificar" onclick="verificar()">
+        </form>
+        
+        <div id="resultado"></div>
+    </main>
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #f1f1f1, #1b1b1b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 15px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-right: 30px;
+            margin-bottom: 90%;
+        }
+
+        main {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="text"] {
+            width: 92%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        #button {
+            width: 98%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #button:hover {
+            background-color: #0056b3;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+
+    <script>
+        function verificar() {
+            var primeiro = document.querySelector('#notaUm').value;
+            var segundo = document.querySelector('#notaDois').value;
+            var terceiro = document.querySelector('#notaTRES').value;
+            var quarto = document.querySelector('#notaQUATRO').value;
+        
+            var resultado = Number(primeiro) + Number(segundo) + Number(terceiro) + Number(quarto);
+            var media = resultado / 4;
+
+            var res = document.querySelector('#resultado');
+            res.innerHTML = `<p>Média do aluno é: ${media}</p>`;
+
+            if (media >= 6) {
+                var emojiAprovado = String.fromCodePoint(0x1F44D);
+                res.innerHTML += `<p style="color: green;">Aprovado ${emojiAprovado}</p>`;
+            } else {
+                var emojiReprovado = String.fromCodePoint(0x1F44E);
+                res.innerHTML += `<p style="color: red;">Reprovado ${emojiReprovado}</p>`;
+            }
+        }
+            
+    </script>
+</body> 
+</html>
